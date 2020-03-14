@@ -15,6 +15,8 @@ An input image first goes through a CNN backbone to extract some image features.
 
 [MaskTextSpotter](https://github.com/MhLiao/MaskTextSpotter) is a simple and smooth end-to-end learning process, which is able to achieve accurate text detection and recognition through semantic segmentation and to handle instances of irregularly shaped text.
 
+We use ResNet and FPN as the Backbong models, and use RPN to extract the proposals
+
 ### Our Model
 In order to implement MaskTextSpotter under detectron2 framework, we devided the model into four parts: config, ROI_head, dataset, and dataloader.
 
