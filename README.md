@@ -3,7 +3,7 @@
 Given multiple object detection algorithms implemented in detectron2, and the importance of OCR problems, we want to implement MaskTextSpotter algorithm aiming at OCR task under detectron2 framework to simplify the using process of MaskTextSpotter algorithm.
 
 ## How our project solves this problem
-### Backbone models
+### Base models
 
 #### Detectron2
 
