@@ -25,6 +25,32 @@ In order to make Mask TextSpotter model be applicable under detectron2, we rewro
 Since detectron2 is using dataset in coco format, while Mask TextSpotter does not have predefined dataset in that format, we need to rewrite dataloader to extract features in images and convert dataset into coco format. 
 
 ## How to train the model
+This part should be the same as original Detectron2, although our model is not completed yet.
+
+### Training & Evaluation in Command Line
+
+To train a model with "train_net.py", run:
+
+```
+python tools/train_net.py --num-gpus 8 \
+	--config-file configs/Base-MaskTextSpotter_RCNN_FPN.yaml
+```
+
+The configs are made for 8-GPU training. To train on 1 GPU, change the batch size with:
+```
+python tools/train_net.py \
+	--config-file configs/Base-MaskTextSpotter_RCNN_FPN.yaml \
+	SOLVER.IMS_PER_BATCH 2 SOLVER.BASE_LR 0.0025
+```
+For this model, CPU training is not supported.
+
+To evaluate a model's performance, use:
+
+```
+python tools/train_net.py \
+	--config-file configs/Base-MaskTextSpotter_RCNN_FPN.yaml \
+	--eval-only MODEL.WEIGHTS /path/to/checkpoint_file
+```
 
 ## How to use the trained model
 This part should be the same as original Detectron2, although our model is not completed yet.
@@ -60,3 +86,22 @@ cd detectron2 && python -m pip install -e .
 python -m pip install detectron2 -f https://dl.fbaipublicfiles.com/detectron2/wheels/cu101/index.html
 You can replace cu101 with "cu{100,92}" or "cpu".
 ```
+
+#### Inference Demo with Pre-trained Models
+
+1. Pick Mask TextSpotter model, which is Base-MaskTextSpotter_RCNN_FPN.yaml.
+2. Detectron2 provide demo.py that is able to run builtin standard models. Run it with:
+```
+python demo/demo.py --config-file configs/Base-MaskTextSpotter_RCNN_FPN.yaml \
+  --input input1.jpg input2.jpg \
+  [--other-options]
+  --opts MODEL.WEIGHTS Base-MaskTextSpotter_RCNN_FPN.pkl
+```
+The configs are made for training, therefore we need to specify model weights to a model for evaluation. This command will run the inference and show visualizations in an OpenCV window. (This is not implemented yet.)
+
+For details of the command line arguments, see ```demo.py -h``` or look at its source code to understand its behavior. Some common arguments are:
+
+- To run on your webcam, replace ```--input files``` with ```--webcam```.
+- To run on a video, replace ```--input files``` with ```--video-input video.mp4```.
+- To run on cpu, add ```MODEL.DEVICE cpu``` after ``--opts```.
+- To save outputs to a directory (for images) or a file (for webcam or video), use ```--output```.
