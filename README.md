@@ -5,11 +5,13 @@ Given multiple object detection algorithms implemented in detectron2, and the im
 ## How our project solves this problem
 ### Backbone models
 
-Detectron2:
+#### Detectron2
 
-Detectron2 is Facebook AI research’s next generation software system that implements state-of-the-art object detection algorithms. It uses a typical generalized RCNN object detection framework. An input image first goes through a CNN backbone to extract some image features. These features are used to predict region proposals which are regions that are likely to contain objects. The features in these regions are cropped and wrapped into some regional features, and then different types of prediction heads use regional features and image features to predict key points as well as densepose for each human found in the image.
+Detectron2 is Facebook AI research’s next generation software system that implements state-of-the-art object detection algorithms. It uses a typical generalized RCNN object detection framework. 
 
-Mask TextSpotter:
+An input image first goes through a CNN backbone to extract some image features. These features are used to predict region proposals which are regions that are likely to contain objects. The features in these regions are cropped and wrapped into some regional features, and then different types of prediction heads use regional features and image features to predict key points as well as densepose for each human found in the image.
+
+#### Mask TextSpotter
 
 Mask TextSpotter is a simple and smooth end-to-end learning process, which is able to achieve accurate text detection and recognition through semantic segmentation and to handle instances of irregularly shaped text.
 
@@ -30,14 +32,11 @@ This part should be the same as original Detectron2, although our model is not c
 ### Installing our model
 #### Requirements
 
-Linux or macOS with Python ≥ 3.6
-
-PyTorch ≥ 1.3
-
-torchvision that matches the PyTorch installation. You can install them together at pytorch.org to make sure of this.
-OpenCV, optional, needed by demo and visualization
-
-pycocotools: pip install cython; pip install -U 'git+https://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI'
+- Linux or macOS with Python ≥ 3.6
+- PyTorch ≥ 1.3
+- torchvision that matches the PyTorch installation. You can install them together at pytorch.org to make sure of this.
+- OpenCV, optional, needed by demo and visualization
+- pycocotools: ```pip install cython; pip install -U 'git+https://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI'```
 
 #### Build Detectron2 from Source
 After having the above dependencies and gcc & g++ ≥ 5, run:
@@ -54,7 +53,7 @@ cd detectron2 && python -m pip install -e .
 # CC=clang CXX=clang++ python -m pip install -e .
 ```
 
-### Install Pre-Built Detectron2
+#### Install Pre-Built Detectron2
 
 ```
 # for CUDA 10.1:
