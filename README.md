@@ -22,7 +22,7 @@ In order to implement MaskTextSpotter under detectron2 framework, we devided the
 
 For config, we rewrote config part to claim the needed setting for this task under detectron2.
 
-In order to make MaskTextSpotter model be applicable under detectron2, we rewrote ROI_head part, which is also the backbone of this model. ROI_head can be devided into MaskHead and BoxHead to implement two tasks: global text instance segmantation task and character segmentation task. 
+In order to make MaskTextSpotter model be applicable under detectron2, we first use ResNet and FPN as the backbone models to extract features of the image, then we use RPN to extract the proposals. We rewrote ROI_head part, which is the core part of our model. ROI_head can be devided into MaskHead and BoxHead to implement two tasks: global text instance segmantation task and character segmentation task. 
 
 Since detectron2 is using dataset in coco format, while MaskTextSpotter does not have predefined dataset in that format, we need to rewrite dataloader to extract features in images and convert dataset into coco format. 
 
