@@ -1,6 +1,6 @@
 # MaskTextSpotter
 ## Main problem that our project is targeting
-Given multiple object detection algorithms implemented in detectron2, and the importance of OCR problems, we want to implement Mask TextSpotter algorithm aiming at OCR task under detectron2 framework to simplify the using process of Mask TextSpotter algorithm.
+Given multiple object detection algorithms implemented in detectron2, and the importance of OCR problems, we want to implement MaskTextSpotter algorithm aiming at OCR task under detectron2 framework to simplify the using process of MaskTextSpotter algorithm.
 
 ## How our project solves this problem
 ### Backbone models
@@ -16,13 +16,13 @@ An input image first goes through a CNN backbone to extract some image features.
 [MaskTextSpotter](https://github.com/MhLiao/MaskTextSpotter) is a simple and smooth end-to-end learning process, which is able to achieve accurate text detection and recognition through semantic segmentation and to handle instances of irregularly shaped text.
 
 ### Our Model
-In order to implement Mask TextSpotter under detectron2 framework, we devided the model into four parts: config, ROI_head, dataset, and dataloader.
+In order to implement MaskTextSpotter under detectron2 framework, we devided the model into four parts: config, ROI_head, dataset, and dataloader.
 
 For config, we rewrote config part to claim the needed setting for this task under detectron2.
 
-In order to make Mask TextSpotter model be applicable under detectron2, we rewrote ROI_head part, which is also the backbone of this model. ROI_head can be devided into MaskHead and BoxHead to implement two tasks: global text instance segmantation task and character segmentation task. 
+In order to make MaskTextSpotter model be applicable under detectron2, we rewrote ROI_head part, which is also the backbone of this model. ROI_head can be devided into MaskHead and BoxHead to implement two tasks: global text instance segmantation task and character segmentation task. 
 
-Since detectron2 is using dataset in coco format, while Mask TextSpotter does not have predefined dataset in that format, we need to rewrite dataloader to extract features in images and convert dataset into coco format. 
+Since detectron2 is using dataset in coco format, while MaskTextSpotter does not have predefined dataset in that format, we need to rewrite dataloader to extract features in images and convert dataset into coco format. 
 
 ## How to train the model
 This part should be the same as [original Detectron2](https://github.com/facebookresearch/detectron2/blob/master/GETTING_STARTED.md), although our model is not completed yet.
@@ -89,7 +89,7 @@ You can replace cu101 with "cu{100,92}" or "cpu".
 
 #### Inference Demo with Pre-trained Models
 
-1. Pick Mask TextSpotter model, which is Base-MaskTextSpotter_RCNN_FPN.yaml.
+1. Pick MaskTextSpotter model, which is Base-MaskTextSpotter_RCNN_FPN.yaml.
 2. Detectron2 provide demo.py that is able to run builtin standard models. Run it with:
 ```
 python demo/demo.py --config-file configs/Base-MaskTextSpotter_RCNN_FPN.yaml \
