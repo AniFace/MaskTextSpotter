@@ -7,13 +7,13 @@ Given multiple object detection algorithms implemented in detectron2, and the im
 
 #### Detectron2
 
-Detectron2 is Facebook AI research’s next generation software system that implements state-of-the-art object detection algorithms. It uses a typical generalized RCNN object detection framework. 
+[Detectron2](https://github.com/facebookresearch/detectron2) is Facebook AI research’s next generation software system that implements state-of-the-art object detection algorithms. It uses a typical generalized RCNN object detection framework. 
 
 An input image first goes through a CNN backbone to extract some image features. These features are used to predict region proposals which are regions that are likely to contain objects. The features in these regions are cropped and wrapped into some regional features, and then different types of prediction heads use regional features and image features to predict key points as well as densepose for each human found in the image.
 
-#### Mask TextSpotter
+#### MaskTextSpotter
 
-Mask TextSpotter is a simple and smooth end-to-end learning process, which is able to achieve accurate text detection and recognition through semantic segmentation and to handle instances of irregularly shaped text.
+[MaskTextSpotter](https://github.com/MhLiao/MaskTextSpotter) is a simple and smooth end-to-end learning process, which is able to achieve accurate text detection and recognition through semantic segmentation and to handle instances of irregularly shaped text.
 
 ### Our Model
 In order to implement Mask TextSpotter under detectron2 framework, we devided the model into four parts: config, ROI_head, dataset, and dataloader.
@@ -25,7 +25,7 @@ In order to make Mask TextSpotter model be applicable under detectron2, we rewro
 Since detectron2 is using dataset in coco format, while Mask TextSpotter does not have predefined dataset in that format, we need to rewrite dataloader to extract features in images and convert dataset into coco format. 
 
 ## How to train the model
-This part should be the same as original Detectron2, although our model is not completed yet.
+This part should be the same as [original Detectron2](https://github.com/facebookresearch/detectron2/blob/master/GETTING_STARTED.md), although our model is not completed yet.
 
 ### Training & Evaluation in Command Line
 
@@ -53,7 +53,7 @@ python tools/train_net.py \
 ```
 
 ## How to use the trained model
-This part should be the same as original Detectron2, although our model is not completed yet.
+This part should be the same as [original Detectron2](https://github.com/facebookresearch/detectron2/blob/master/INSTALL.md), although our model is not completed yet.
 
 ### Installing our model
 #### Requirements
